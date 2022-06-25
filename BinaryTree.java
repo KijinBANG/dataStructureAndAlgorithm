@@ -17,7 +17,7 @@ class Node {
 
 class Tree {
     public Node root;
-    public void seRoot(Node node) {
+    public void setRoot(Node node) {
         this.root = node;
     }
     public Node getRoot() {
@@ -34,14 +34,14 @@ class Tree {
     public void inorder(Node node) {
         if (node != null) {
             inorder(node.left);
-            System.out.println(node.data);
+            System.out.print(node.data);
             inorder(node.right);
         }
     }
 
     public void preorder(Node node) {
         if (node != null) {
-            System.out.println(node.data);
+            System.out.print(node.data);
             preorder(node.left);
             preorder(node.right);
         }
@@ -51,14 +51,24 @@ class Tree {
         if (node != null) {
             postorder(node.left);
             postorder(node.right);
-            System.out.println(node.data);
+            System.out.print(node.data);
         }
     }
 }
 
-public class tree {
+public class BinaryTree {
     public static void main(String[] args) {
-
-
+        Tree t = new Tree();
+        Node n4 = t.makeNode(null, 4, null);
+        Node n5 = t.makeNode(null, 5, null);
+        Node n2 = t.makeNode(n4, 2, n5);
+        Node n3 = t.makeNode(null, 3, null);
+        Node n1 = t.makeNode(n2, 1, n3);
+        t.setRoot(n1);
+        t.inorder(t.getRoot());
+        System.out.println("\n---------------------");
+        t.preorder(t.getRoot());
+        System.out.println("\n---------------------");
+        t.postorder(t.getRoot());
     }
 }
